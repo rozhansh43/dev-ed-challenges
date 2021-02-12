@@ -15,10 +15,23 @@ darkMode.addEventListener('click', () => {
     timeline.add({
             // it is like query selector
             targets: ".sun",
-            d: [{ value: moonPath }]
+            d: [{ value: toggle ? sunPath : moonPath }]
         })
         .add({
-            targets: '#darkMood',
-            rotate: 320
-        });
+                targets: '#darkMood',
+                rotate: 320
+            },
+            "-=350"
+        )
+        .add({
+            targets: "section",
+            backgroundColor: toggle ? 'rgb(255,255,255)' : "rgb(22,22,22)",
+            color: toggle ? "rgb(22,22,22)" : "rgb(255,255,255)"
+        }, '-=700');
+    // toggle switch
+    if (!toggle) {
+        toggle = true;
+    } else {
+        toggle = false;
+    }
 });
